@@ -1,0 +1,966 @@
+<!-- Dedicated to God the Father -->
+
+<!-- All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024 -->
+
+<!-- https://github.com/ChristopherTopalian -->
+
+<!-- https://github.com/ChristopherAndrewTopalian -->
+
+<!-- Topalian_JavaScript_Teacher.html -->
+
+<!-- Version 001 - (2024-03-31) -->
+
+<html>
+<head>
+<title> Topalian JavaScript Teacher </title>
+
+<style>
+
+/* Dedicated to God the Father */
+
+/* All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024 */
+
+/* https://github.com/ChristopherTopalian */
+
+/* https://github.com/ChristopherAndrewTopalian */
+
+/* style001.css */
+
+body
+{
+    background-color: rgb(40, 40, 40);
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+a
+{
+    color: rgb(100, 100, 100);
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
+.mainDiv
+{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.jsTextbox
+{
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    width: 100vw;
+    height: 250px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(200, 200, 200);
+    text-align: left;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.controlsDiv
+{
+    position: absolute;
+    left: 10px;
+    top: 150px;
+    z-index: 2;
+}
+
+.titleStyle001
+{
+    font-family: Arial;
+    font-weight: bold;
+    color: rgb(100, 100, 100);
+}
+
+.buttonStyle001
+{
+    background-color: rgb(0, 0, 0);
+    margin-left: 4px;
+    margin-right: 4px;
+    border: solid 1px rgb(100, 100, 100);
+    border-radius: 8px;
+    padding-left:  10px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 4px rgba(255, 255, 255, 1.0);
+}
+
+.buttonStyle001:hover
+{
+    border-color: rgb(0, 255, 255);
+    color: aqua;
+}
+
+.buttonStyle001:active
+{
+    border-color: rgb(255, 0, 255);
+    color: rgb(255, 0, 255);
+}
+
+.textboxStyle001
+{
+    background-color: rgb(40, 40, 40);
+    width: 70px;
+    height: 30px;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(120, 120, 120);
+    line-height: 22px;
+    text-align: center;
+    resize: none;
+}
+
+input[type = "range"]
+{
+    -webkit-appearance: none;
+    appearance: none;
+    height: 10px;
+    background: linear-gradient(to right, rgb(10, 25, 47), rgb(0, 180, 255));
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+input[type = "range"]:hover
+{
+    opacity: 1;
+}
+
+/* chrome and chromium */
+input[type = "range"]::-webkit-slider-thumb
+{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background:rgb(0, 180, 255);
+    border: solid 2px rgb(20, 20, 20);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* mozilla */
+input[type = "range"]::-moz-range-thumb
+{
+    height: 16px;
+    background: rgb(255, 255, 255);
+    border-width: 0px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+</style>
+
+<script>
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// shortcuts.js
+
+function ge(whichId)
+{
+    let result = document.getElementById(whichId);
+
+    return result;
+}
+
+function ce(whichType)
+{
+    let result = document.createElement(whichType);
+
+    return result;
+}
+
+function ba(whichElement)
+{
+    let result = document.body.append(whichElement);
+
+    return result;
+}
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// worldVariables.js
+
+let online = true;
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// jsLanguage.js
+
+let jsLanguage = [
+"array.at(index)",
+"array1.concat(array2, array3);",
+"array.copyWithin(target, start, end);",
+"array.entries()",
+"array.every(function(currentValue, index, arr), thisValue)",
+"array.fill(value, start, end)",
+"array.filter(function(currentValue, index, arr), thisValue)",
+"array.find(function(currentValue, index, arr),thisValue)",
+"array.findIndex(function(currentValue, index, arr), thisValue)",
+"array.flat(depth)",
+"array.flatMap(function(currentValue, index, arr), thisValue)",
+"array.forEach(function(currentValue, index, arr), thisValue)",
+"array.from(object, mapFunction, thisValue)",
+"array.includes(element, start)",
+"array.indexOf(item, start)",
+"array.isArray(obj)",
+"array.join(separator)",
+"array.keys()",
+"array.length and  array.length = number",
+"array.lastIndexOf(item, start)",
+"array.map(function(currentValue, index, arr), thisValue)",
+"array.pop()",
+"array.prototype.name = value",
+"array.push(item1, item2, ..., itemX)",
+"array.reduce(function(total, currentValue, currentIndex, arr), initialValue)",
+"array.reduceRight(function(total, currentValue, currentIndex, arr), initialValue)",
+"array.reverse()",
+"array.shift()",
+"array.slice(start, end)",
+"array.some(function(currentValue, index, arr), thisValue)",
+"array.sort(compareFunction)",
+"array.splice(index, howmany, item1, ....., itemX)",
+"array.toString()",
+"array.unshift(item1, item2, ..., itemX)",
+"array.valueOf()",
+
+"Math.abs(x)",
+"Math.acos(x)",
+"Math.acosh(x)",
+"Math.asin(x)",
+"Math.asinh(x)",
+"Math.atan(x)",
+"Math.atan2(y, x)",
+"Math.atanh(x)",
+"Math.cbrt(x)",
+"Math.ceil(x)",
+"Math.clz32(x)",
+"Math.cos(x)",
+"Math.cosh(x)",
+"Math.E",
+"Math.exp(x)",
+"Math.expm1(x)",
+"Math.floor(x)",
+"Math.fround(x)",
+"Math.LN2",
+"Math.LN10",
+"Math.log(x)",
+"Math.log10(x)",
+"Math.log1p(x)",
+"Math.LOG2E",
+"Math.LOG10E",
+"Math.max(n1, n2,…)",
+"Math.min(n1, n2,…)",
+"Math.PI",
+"Math.pow(x, y)",
+"Math.random()",
+"Math.round(x)",
+"Math.sign(x)",
+"Math.sin(x)",
+"Math.sinh(x)",
+"Math.sqrt(x)",
+"Math.SQRT1_2",
+"Math.SQRT2",
+"Math.tan(x)",
+"Math.tanh(x)",
+"Math.trunc(x)",
+
+"boolean.constructor",
+"boolean.prototype.name = value ",
+"boolean.toString()",
+"boolean.valueOf()",
+
+"Date.constructor",
+"Date.getDate()",
+"Date.getDay()",
+"Date.getFullYear()",
+"Date.getHours()",
+"Date.getMilliseconds()",
+"Date.getMinutes()",
+"Date.getMonth()",
+"Date.getSeconds()",
+"Date.getTime()",
+"Date.getTimezoneOffset()",
+"Date.getUTCDate()",
+"Date.getUTCDay()",
+"Date.getUTCFullYear()",
+"Date.getUTCHours()",
+"Date.getUTCMilliseconds()",
+"Date.getUTCMinutes()",
+"Date.getUTCMonth()",
+"Date.getUTCSeconds()",
+"Date.now()",
+"Date.parse(datestring)",
+"Date.prototype.name = value",
+"Date.setDate(day)",
+"Date.setFullYear(year, month, day)",
+"Date.setHours(hour, min, sec, millisec)",
+"Date.setMilliseconds(millisec)",
+"Date.setMinutes(min, sec, millisec)",
+"Date.setMonth(month, day)",
+"Date.setSeconds(sec, millisec)",
+"Date.setTime(millisec)",
+"Date.setUTCDate(day)",
+"Date.setUTCFullYear(year, month, day)",
+"Date.setUTCHours(hour, min, sec, millisec)",
+"Date.setUTCMilliseconds(millisec)",
+"Date.setUTCMinutes(min, sec, millisec)",
+"Date.setUTCMonth(month, day)",
+"Date.setUTCSeconds(sec, millisec)",
+"Date.toDateString()",
+"Date.toISOString()",
+"Date.toJSON()",
+"Date.toLocaleDateString()",
+"Date.toLocaleTimeString()",
+"Date.toLocaleString(locales, options)",
+"Date.toString()",
+"Date.toTimeString()",
+"Date.toUTCString()",
+"Date.UTC(year, month, day, hours, minutes, seconds, millisec)",
+"Date.valueOf()",
+
+"string.charAt(index)",
+"string.at(index)",
+"string.charAt(index)",
+"string.charCodeAt(index)",
+"string.codePointAt(index)",
+"string.concat(string1, string2, ..., stringX)",
+"string.constructor",
+"string.endsWith(searchvalue, length)",
+"String.fromCharCode(n1, n2, ..., nX)",
+"string.includes(searchvalue, start)",
+"string.indexOf(searchvalue, start)",
+"string.lastIndexOf(searchvalue, start)",
+"string.length",
+"string.localeCompare(compareString)",
+"string.match(match)",
+"string.padEnd(length, string)",
+"string.padStart(length, string)",
+"object.prototype.name = value",
+"string.repeat(count)",
+"string.replace(searchValue, newValue)",
+"string.replaceAll(searchValue, newValue)",
+"string.search(searchValue)",
+"string.slice(start, end)",
+"string.split(separator, limit)",
+"string.startsWith(searchValue, start)",
+"string.substr(start, length)",
+"string.substring(start, end)",
+"string.toLocaleLowerCase()",
+"string.toLocaleUpperCase()",
+"string.toLowerCase()",
+"string.toString()",
+"string.toUpperCase()",
+"string.trim()",
+"string.trimEnd()",
+"string.valueOf()",
+
+"decodeURI(uri)",
+"decodeURIComponent(uri)",
+"encodeURI(uri)",
+"encodeURIComponent(uri)",
+"eval(string)",
+"Infinity",
+"isFinite(value)",
+"isNaN(value)",
+"NaN",
+"Number(value)",
+"parseFloat(value)",
+"parseInt(string, radix)",
+"String(value)",
+"number.constructor",
+"Number.EPSILON",
+"Number.isFinite(value)",
+"Number.isSafeInteger(value)",
+"Number.isInteger(value)",
+"Number.isNaN(value)",
+"Number.isSafeInteger(value)",
+"let x = Number.MAX_SAFE_INTEGER; ",
+"Number.MIN_SAFE_INTEGER",
+"Number.MAX_VALUE",
+"Number.MIN_VALUE",
+"Number.NEGATIVE_INFINITY",
+"Number.NaN",
+"Number.POSITIVE_INFINITY",
+"Number.parseFloat(value)",
+"Number.parseInt(string, radix)",
+"Number.prototype.name = value",
+"number.toExponential(x)",
+"number.toFixed(x)",
+"number.toLocaleString(locales, options)",
+"number.toPrecision(x)",
+"number.toString(radix)",
+"number.valueOf()",
+"RegExpObject.constructor",
+"RegExpObject.exec(string)",
+"/regexp/g",
+"RegExpObject.global",
+"/regexp/i",
+"RegExpObject.ignoreCase",
+"RegExpObject.lastIndex",
+"/regexp/m",
+"RegExpObject.multiline",
+"/n+/g",
+"/n*/g",
+"/n?/g",
+"/n{X}/g",
+"/n{X,Y}/g",
+"/n{X,}/g",
+"/n$/g",
+"/^n/ /\\^n/g",
+"/regexp(?=n)/g",
+"/regexp(?!n)/g",
+"RegExpObject.source",
+"RegExpObject.test(string)",
+"RegExpObject.toString()",
+"/[abc]/g",
+"/[^xyz]/g",
+"/[0-9]/g", 
+"/[^0-9]/g",
+"/(x|y)/g",
+"/regexp./g",
+"/\\w/g",
+"/\\W/g",
+"/\\d/g",
+"/\\D/g",
+"/\\s/g",
+"/\\S/g",
+"/\\bregexp/g",
+"/\\bregexp/g",
+"/\\0/",
+"/\\n/",
+"/\\f/",
+"/\\r/",
+"/\\t/",
+"/\\v/",
+"/\\xxx/g",
+"/\\xdd/g",
+"/\\udddd/g",
+
+"constructor(parameters)",
+"class subClass extends mainClass",
+"static methodName()",
+"super(arguments);",
+"super.parentMethod(arguments);",
+
+"errorObj.name",
+"errorObj.message",
+
+"JSON.parse(string, function)",
+"JSON.stringify(obj, replacer, space)",
+
+"console.assert(expression, message)",
+"console.clear()",
+"console.count(label)",
+"console.error(message)",
+"console.group(label)",
+"console.groupCollapsed(label)",
+"console.groupEnd()",
+"console.info(message)",
+"console.log(message)",
+"console.table(tabledata, tablecolumns)",
+"console.time(label)",
+"console.timeEnd(label)",
+"console.trace(label)",
+"console.warn(message)",
+
+"history.back()",
+"history.forward()",
+"history.go(number)",
+"history.length",
+
+"localStorage.key(index)",
+"sessionStorage.key(index)",
+"localStorage.length",
+"sessionStorage.length",
+"localStorage.getItem(keyname)",
+"sessionStorage.getItem(keyname)",
+"localStorage.setItem(keyname, value)",
+"sessionStorage.setItem(keyname, value)",
+"localStorage.removeItem(keyname)",
+"sessionStorage.removeItem(keyname)",
+"localStorage.clear()",
+"sessionStorage.clear()",
+
+"getCurrentPosition(success)",
+"getCurrentPosition(success, error)",
+"getCurrentPosition(success, error, options)"
+];
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// makeInterface.js
+
+let speed = 500;
+
+let jsTextSize = 20;
+
+function makeInterface()
+{
+    // mainDiv
+    let mainDiv = ce("div");
+    mainDiv.className = "mainDiv";
+    mainDiv.id = "mainDiv";
+    ba(mainDiv);
+
+    //-//
+
+    // jsTextbox
+    let jsTextbox = ce("div");
+    jsTextbox.className = "jsTextbox";
+    jsTextbox.id = "jsTextbox";
+    jsTextbox.title = "jsTextbox";
+    jsTextbox.innerHTML = "JavaScript Teacher";
+    ba(jsTextbox);
+
+    //-//
+
+    // controlsDiv
+    let controlsDiv = ce("div");
+    controlsDiv.className = 'controlsDiv';
+    controlsDiv.id = 'controlsDiv';
+    ba(controlsDiv);
+
+    //-//
+
+    // speedTitle
+    let speedTitle = ce("div");
+    speedTitle.className = "titleStyle001";
+    speedTitle.id = "speedTitle";
+    speedTitle.title = "speedTitle";
+    speedTitle.textContent = "Speed";
+    controlsDiv.append(speedTitle);
+
+    //-//
+
+    // speedTextbox
+    let speedTextbox = ce("textarea");
+    speedTextbox.className = "textboxStyle001";
+    speedTextbox.id = "speedTextbox";
+    speedTextbox.title = "speedTextbox";
+    speedTextbox.innerHTML = speed;
+    speedTextbox.onmouseover = function()
+    {
+        audioPlay('sfx_warp_001', 1.0);
+    };
+    speedTextbox.onclick = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+    };
+    speedTextbox.onkeyup = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+
+        speed = ge("speedTextbox").value = speedTextbox.value;
+
+        ge("speedSlider").value = speedTextbox.value;
+
+        changeText(jsLanguage);
+    };
+    controlsDiv.append(speedTextbox); 
+
+    //-//
+
+    // speedSlider
+    let speedSlider = ce("input");
+    speedSlider.className = "sliderStyle001";
+    speedSlider.id = "speedSlider";
+    speedSlider.type = "range";
+    speedSlider.min = 1;
+    speedSlider.max = 1000;
+    speedSlider.value = speed;
+    speedSlider.oninput = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+
+        ge("speedTextbox").value = speedSlider.value;
+
+        speed = ge("speedTextbox").value = speedSlider.value;
+
+        changeText(jsLanguage);
+    };
+
+    speedSlider.onchange = function()
+    {
+        audioPlay('sfx_warp_001', 1.0);
+    };
+
+    controlsDiv.append(speedSlider);
+
+    //-//
+
+    // line break
+    let LBUnderSpeedSlider = ce("br");
+    LBUnderSpeedSlider.style.marginBottom = "10px";
+    controlsDiv.append(LBUnderSpeedSlider);
+
+    //-//
+
+    // fontSizeTitle
+    let fontSizeTitle = ce("div");
+    fontSizeTitle.className = "titleStyle001";
+    fontSizeTitle.id = "fontSizeTitle";
+    fontSizeTitle.title = "fontSizeTitle";
+    fontSizeTitle.textContent = "Font Size";
+    controlsDiv.append(fontSizeTitle);
+
+    //-//
+
+    // fontSizeTextbox
+    let fontSizeTextbox = ce("textarea");
+    fontSizeTextbox.className = "textboxStyle001";
+    fontSizeTextbox.id = "fontSizeTextbox";
+    fontSizeTextbox.title = "fontSizeTextbox";
+    fontSizeTextbox.innerHTML = jsTextSize;
+    fontSizeTextbox.onmouseover = function()
+    {
+        audioPlay('sfx_warp_001', 1.0);
+    };
+    fontSizeTextbox.onclick = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+    };
+    fontSizeTextbox.onkeyup = function()
+    {
+        ge('sfx_blip_001').play();
+
+        jsTextSize = ge("fontSizeTextbox").value = fontSizeTextbox.value;
+
+        ge("fontSizeSlider").value = fontSizeTextbox.value;
+
+        ge("jsTextbox").style.fontSize = fontSizeTextbox.value + "px";
+    };
+    controlsDiv.append(fontSizeTextbox); 
+
+    //-//
+
+    // fontSizeSlider
+    let fontSizeSlider = ce("input");
+    fontSizeSlider.className = "sliderStyle001";
+    fontSizeSlider.id = "fontSizeSlider";
+    fontSizeSlider.type = "range";
+    fontSizeSlider.min = 20;
+    fontSizeSlider.max = 40;
+    fontSizeSlider.value = jsTextSize;
+    fontSizeSlider.oninput = function()
+    {
+        ge('sfx_blip_001').play();
+
+        ge("fontSizeTextbox").value = fontSizeSlider.value;
+
+        jsTextSize = ge("fontSizeTextbox").value = fontSizeSlider.value;
+
+        ge("jsTextbox").style.fontSize = fontSizeSlider.value + "px";
+    };
+    fontSizeSlider.onchange = function()
+    {
+        ge('sfx_warp_001').play();
+    };
+    controlsDiv.append(fontSizeSlider);
+
+    //-//
+
+    // line break
+    let LBUnderFontSizeSlider = ce("br");
+    LBUnderFontSizeSlider.style.marginBottom = "10px";
+    controlsDiv.append(LBUnderFontSizeSlider);
+
+    //-//
+
+    // fontColorTitle
+    let fontColorTitle = ce("div");
+    fontColorTitle.className = "titleStyle001";
+    fontColorTitle.id = "fontColorTitle";
+    fontColorTitle.title = "fontColorTitle";
+    fontColorTitle.textContent = "Font Color";
+    controlsDiv.append(fontColorTitle);
+
+    //-//
+
+    // colorChooser
+    let colorChooser = ce("input");
+    colorChooser.type = "color";
+    colorChooser.className = "colorChooser";
+    colorChooser.id = "colorChooser";
+    colorChooser.onmouseover = function()
+    {
+        audioPlay('sfx_warp_001', 1.0);
+    };
+    colorChooser.onclick = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+    };
+    colorChooser.oninput = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+
+        ge("jsTextbox").style.color = colorChooser.value;
+
+        console.log(colorChooser.value);
+    };
+    colorChooser.onchange = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+    };
+    controlsDiv.append(colorChooser);
+
+    //-//
+
+    // line break
+    let LBUnderColorChooser = ce("hr");
+    LBUnderColorChooser.style.marginBottom = "10px";
+    controlsDiv.append(LBUnderColorChooser);
+
+    //-//
+
+    // activateButton
+    let activateButton = ce("button");
+    activateButton.className = "buttonStyle001";
+    activateButton.id = "activateButton";
+    activateButton.title = "activateButton";
+    activateButton.innerHTML = "Activate";
+    activateButton.onclick = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+        changeText(jsLanguage);
+    };
+    activateButton.onmouseover = function()
+    {
+        audioPlay('sfx_warp_001', 1.0);
+    };
+    controlsDiv.append(activateButton);
+
+    //-//
+
+    // pauseButton
+    let pauseButton = ce("button");
+    pauseButton.className = "buttonStyle001";
+    pauseButton.id = "pauseButton";
+    pauseButton.title = "pauseButton";
+    pauseButton.innerHTML = "Pause";
+    pauseButton.onclick = function()
+    {
+        audioPlay('sfx_blip_001', 1.0);
+        clearInterval(timer001);
+    };
+    pauseButton.onmouseover = function()
+    {
+        audioPlay('sfx_warp_001', 1.0);
+    };
+    controlsDiv.append(pauseButton);
+}
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// makeTitleOfApp.js
+
+function makeTitleOfApp()
+{
+    // titleContainer
+    let titleContainer = ce('div');
+    titleContainer.style.position = 'absolute';
+    titleContainer.style.right = '10px';
+    titleContainer.style.bottom = '5px';
+    titleContainer.style.zIndex = 1;
+    ba(titleContainer);
+
+    //-//
+
+    // titleText
+    let titleText = ce('div');
+    titleText.className = 'titleStyle001';
+    titleText.innerHTML =
+    `<a href = 'https://github.com/christophertopalian/' target = '_blank'> Topalian JavaScript Teacher </a>`;
+    titleContainer.append(titleText);
+}
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// audioPlay.js
+
+function audioPlay(whichId, whichVolume)
+{
+    let audio = ge(whichId);
+
+    if (audio)
+    {
+        audio.volume = whichVolume;
+        audio.play();
+    }
+}
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// dataSounds.js
+
+let sounds =
+[
+    {
+        name: 'sfx_blip_001',
+        soundFileOffline: 'media/sounds/sfx_blip_001.mp4',
+        soundFileOnline: 'https://collegeofscripting.weebly.com/uploads/6/4/4/8/64482293/sfx_blip_001.mp4'
+    },
+
+    {
+        name: 'sfx_warp_001',
+        soundFileOffline: 'media/sounds/sfx_warp_001.mp3',
+        soundFileOnline: 'https://collegeofscripting.weebly.com/uploads/6/4/4/8/64482293/sfx_warp_001.mp4'
+    }
+];
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// loadSounds.js
+
+function loadSounds(whichArray)
+{
+    for (let x = 0; x < whichArray.length; x++)
+    {
+        let theSound = ce('audio');
+
+        if (online == false)
+        {
+            theSound.src = whichArray[x].soundFileOffline;
+        }
+        else
+        {
+            theSound.src = whichArray[x].soundFileOnline;
+        }
+
+        theSound.id = whichArray[x].name;
+        theSound.loop = false;
+        theSound.volume = 1.0;
+        ba(theSound);
+    }
+}
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// changeText.js
+
+let timer001;
+
+let counter = 0;
+
+function changeText(whichArray)
+{
+    clearInterval(timer001);
+
+    timer001 = setInterval(function()
+    {
+        if (counter < whichArray.length)
+        {
+            ge("jsTextbox").innerHTML = whichArray[counter];
+
+            counter += 1;
+            
+        }
+        else
+        {
+            counter = 0;
+        }
+    }, speed);
+}
+
+// Dedicated to God the Father
+
+// All Rights Reserved Christopher Andrew Topalian Copyright 2000-2024
+
+// https://github.com/ChristopherTopalian
+
+// https://github.com/ChristopherAndrewTopalian
+
+// whenLoaded.js
+
+function whenLoaded()
+{
+    loadSounds(sounds);
+
+    makeInterface();
+
+    makeTitleOfApp();
+}
+
+</script>
+
+</head>
+
+<body onload = 'whenLoaded();'>
+
+<body>
+
+</html>
+
